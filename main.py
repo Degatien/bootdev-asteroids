@@ -40,11 +40,15 @@ def main():
             if player.check_collision(sprite):
                 print("Game over!")
                 sys.exit()
+            for shot in shots:
+                if sprite.check_collision(shot):
+                    shot.kill()
+                    sprite.split()
         screen.fill("black")
         for sprite in drawable:
             sprite.draw(screen)
         pygame.display.flip()
-        dt = clock.tick(60) / 60
+        dt = clock.tick(60) / 1000
         
 
 
